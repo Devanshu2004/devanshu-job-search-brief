@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Job Search Brief</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap">
+<style>
+/* Layout: a clean site in the style of a modern WordPress theme. White header bar,
+   a blue hero with the day's summary, stat cards overlapping its lower edge, a sticky
+   row of section links, then the brief as sections read top to bottom, each with its
+   own colour and every entry shown in full. One bright look, by choice: no dark theme. */
+:root{
+  color-scheme:light;
+  --bg:#F3F7FC; --surface:#FFFFFF; --ink:#0F172A; --text:#334155; --muted:#64748B; --line:#E2E8F0;
+  --brand:#046BD2; --brand-dark:#0455A8; --brand-tint:#E7F1FD; --on-brand:#FFFFFF;
+  --job:#046BD2; --job-tint:#E7F1FD; --company:#0B8F63; --company-tint:#E2F6EE; --event:#7139E0; --event-tint:#EFE8FD;
+  --outreach:#D95B0B; --outreach-tint:#FEEFE3; --continue:#C8246F; --continue-tint:#FCE7F1;
+  --good:#0B7A55; --good-bg:#DDF5EA; --warn:#96520A; --warn-bg:#FEF3C7; --crit:#B91C1C; --crit-bg:#FEE2E2;
+  --shadow:0 1px 2px rgba(15,23,42,.06),0 8px 24px -12px rgba(15,23,42,.18);
+  --head:"Poppins","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Inter","Helvetica Neue","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.6;margin:0}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--head);color:var(--ink);text-wrap:balance}
+h2{font-weight:600;font-size:22px;line-height:1.25}
+h3{font-weight:600;font-size:19px;line-height:1.3}
+a{color:var(--brand)}
+button,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #F59E0B;outline-offset:2px}
+.container{max-width:1120px;margin:0 auto;padding-inline:18px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+svg.ic{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+.site-head{background:var(--surface);border-bottom:1px solid var(--line)}
+.site-head .container{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:600;font-size:17px;color:var(--ink);min-width:0}
+.logo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--brand);color:var(--on-brand);display:flex;align-items:center;justify-content:center;flex:none}
+.days{display:flex;align-items:center;gap:6px;flex:none}
+.days button,.days select{background:var(--surface);border:1px solid var(--line);border-radius:8px;min-height:40px;padding:0 10px;font-size:14px;cursor:pointer}
+.days button{width:38px;padding:0;font-size:18px;color:var(--ink)}
+.days button:disabled{opacity:.35;cursor:default}
+.days select{max-width:150px}
+@media (max-width:480px){.days button{display:none}.days select{max-width:128px}}
+
+.hero{background:linear-gradient(135deg,var(--brand),var(--brand-dark));color:var(--on-brand)}
+.hero .container{padding-block:34px 76px;display:flex;flex-direction:column;gap:12px}
+.eyebrow{font-family:var(--head);font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+.hero h1{color:var(--on-brand);font-weight:700;font-size:34px;line-height:1.12}
+.hero p.lead{font-size:17px;max-width:44em;opacity:.95}
+.hero .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{font-family:var(--head);font-weight:600;font-size:15px;border-radius:999px;min-height:44px;padding:0 20px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;border:2px solid transparent}
+.btn.white{background:var(--surface);color:var(--brand-dark)}
+.btn.ghost{border-color:rgba(255,255,255,.7);color:var(--on-brand)}
+.btn.primary{background:var(--brand);color:var(--on-brand)}
+.btn.outline{background:var(--surface);border-color:var(--line);color:var(--ink)}
+
+main{display:flex;flex-direction:column;gap:26px;padding-bottom:40px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:-46px}
+.stat{background:var(--surface);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;min-width:0}
+.stat b{display:block;font-family:var(--head);font-weight:700;font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:var(--muted);line-height:1.3;display:block}
+.stat:nth-child(1) b{color:var(--job)}.stat:nth-child(2) b{color:var(--event)}.stat:nth-child(3) b{color:var(--outreach)}.stat:nth-child(4) b{color:var(--company)}
+@media (max-width:560px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.hero h1{font-size:28px}}
+
+.alert{border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.alert.warn{background:var(--warn-bg);color:var(--warn)}
+.alert.crit{background:var(--crit-bg);color:var(--crit)}
+.alert.info{background:var(--surface);border:1px dashed var(--muted);color:var(--muted);font-size:14px}
+.alert h2{font-size:17px;color:inherit;display:flex;align-items:center;gap:8px}
+.alert ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;color:var(--ink)}
+
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:var(--bg);display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-inline:-18px;padding:10px 18px;border-bottom:1px solid var(--line)}
+.nav::-webkit-scrollbar{display:none}
+.chip{--c:var(--brand);--t:var(--brand-tint);flex:none;font-family:var(--head);font-weight:500;font-size:14px;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:999px;min-height:40px;padding:0 14px;display:flex;gap:8px;align-items:center;color:var(--text)}
+.chip i{font-style:normal;font-size:12px;font-weight:600;background:var(--t);border-radius:999px;padding:1px 8px;color:var(--c)}
+.chip.hot{background:var(--warn-bg);border-color:var(--warn-bg);color:var(--warn)}
+
+.sec{--c:var(--brand);--t:var(--brand-tint);display:flex;flex-direction:column;gap:12px;scroll-margin-top:calc(env(safe-area-inset-top,0px) + 70px)}
+.t-job{--c:var(--job);--t:var(--job-tint)}
+.t-company{--c:var(--company);--t:var(--company-tint)}
+.t-event{--c:var(--event);--t:var(--event-tint)}
+.t-outreach{--c:var(--outreach);--t:var(--outreach-tint)}
+.t-continue{--c:var(--continue);--t:var(--continue-tint)}
+.t-warn{--c:var(--warn);--t:var(--warn-bg)}
+.sec-head{display:flex;align-items:center;gap:12px}
+.sec-ic{width:38px;height:38px;border-radius:11px;background:var(--t);color:var(--c);display:flex;align-items:center;justify-content:center;flex:none}
+.sec-ic svg.ic{width:20px;height:20px}
+.sec-head .count{margin-left:auto;font-family:var(--head);font-weight:600;font-size:13px;background:var(--t);color:var(--c);border-radius:999px;padding:3px 11px}
+.sec-note{font-size:14px;color:var(--muted)}
+.list{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);padding:2px 18px}
+.item{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:18px 0;border-top:1px solid var(--line)}
+.item:first-child{border-top:0}
+.item.plain{grid-template-columns:minmax(0,1fr)}
+.num{font-family:var(--head);font-weight:700;font-size:14px;min-width:36px;height:36px;padding:0 8px;border-radius:999px;background:var(--c);color:#fff;display:inline-flex;align-items:center;justify-content:center}
+.body{display:flex;flex-direction:column;gap:8px;min-width:0;overflow-wrap:anywhere}
+.body h3{font-size:18px}
+.meta{font-size:14px;color:var(--muted)}
+.fit{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;max-width:320px}
+.fit .bar{flex:1;height:7px;border-radius:999px;background:var(--bg);overflow:hidden;min-width:60px}
+.fit .bar i{display:block;height:100%;border-radius:999px;background:var(--c)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;font-weight:600;border-radius:999px;padding:2px 9px;background:var(--bg);color:var(--text)}
+.tag.good{background:var(--good-bg);color:var(--good)}
+.tag.warn{background:var(--warn-bg);color:var(--warn)}
+.tag.crit{background:var(--crit-bg);color:var(--crit)}
+.facts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;font-size:15px;margin:0}
+.facts dt{font-weight:600;color:var(--muted)}
+.facts dd{margin:0;color:var(--ink)}
+.open{align-self:flex-start;font-family:var(--head);font-weight:600;font-size:14px;color:var(--c);text-decoration:none}
+.open:hover{text-decoration:underline}
+.alert-list{margin:0;padding:16px 18px 16px 38px;display:flex;flex-direction:column;gap:8px;background:var(--warn-bg);border-radius:16px;color:var(--ink)}
+
+.event{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.event-top{background:var(--t);padding:18px;display:flex;flex-direction:column;gap:4px}
+.event-body{padding:6px 18px 18px;display:flex;flex-direction:column;gap:10px}
+.say{font-size:15px;display:flex;flex-direction:column;gap:3px}
+.say b{color:var(--c);margin-right:6px}
+.label{font-family:var(--head);font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--c);margin-top:6px}
+.tight{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.reply{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);padding:18px;display:flex;flex-direction:column;gap:6px}
+.reply code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:13px;background:var(--brand-tint);color:var(--ink);border-radius:10px;padding:12px 14px;display:block;overflow-wrap:anywhere;user-select:all;margin-block:6px}
+.reply .btn{align-self:flex-start}
+.reply ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+
+.empty{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);padding:34px 20px;text-align:center;display:flex;flex-direction:column;gap:8px;margin-top:-46px}
+.site-foot{border-top:1px solid var(--line);background:var(--surface);color:var(--muted);font-size:14px}
+.site-foot .container{padding-block:18px 28px}
+.lock{margin-top:-46px;align-items:center}
+.lock input{font:inherit;width:100%;max-width:320px;min-height:46px;border:1px solid var(--line);border-radius:10px;padding:0 14px;background:var(--surface);color:var(--ink)}
+.lock-err{color:var(--crit);font-size:14px;min-height:1.4em}
+.linkbtn{background:none;border:0;padding:0;color:var(--brand);text-decoration:underline;cursor:pointer;font-size:14px}
+[hidden]{display:none!important}
+img{max-width:100%}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="container">
+    <div class="logo"><div class="logo-mark"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></div><span>Job Search Brief</span></div>
+    <div class="days">
+      <button type="button" id="prev" aria-label="Earlier brief" disabled>&#8249;</button>
+      <select id="day" aria-label="Choose a day" disabled></select>
+      <button type="button" id="next" aria-label="Later brief" disabled>&#8250;</button>
+    </div>
+  </div>
+</header>
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow" id="kind">Morning brief</p>
+    <h1 id="date">Your job search, one page a day</h1>
+    <p class="lead" id="lead">New jobs, Boston companies, events, inbox updates and follow-ups, ready each morning.</p>
+    <div class="actions" id="actions" hidden>
+      <a class="btn white" href="#jobs">Go to new jobs</a>
+      <a class="btn ghost" href="#reply">How to reply</a>
+    </div>
+  </div>
+</section>
+<main class="container" id="main">
+  <div class="empty" id="state">
+    <h2>Loading your latest brief</h2>
+    <p class="muted">Your brief appears here after each morning run.</p>
+  </div>
+</main>
+<footer class="site-foot"><div class="container">Reply in Claude with the numbers shown beside each item. Nothing is applied, sent or registered from this page. <button type="button" class="linkbtn" id="lock" hidden>Lock this device</button></div></footer>
+
+<script>
+(function(){
+  var state={briefs:[],sel:null,follow:true};
+  var main=document.getElementById('main');
+  var dayEl=document.getElementById('day'),prev=document.getElementById('prev'),next=document.getElementById('next');
+  var ICONS={
+    job:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
+    company:'<rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/>',
+    event:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+    outreach:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+    continue:'<circle cx="12" cy="12" r="9"/><path d="M9.6 9.5a2.5 2.5 0 1 1 3.6 2.2c-.8.4-1.2 1-1.2 1.8M12 17h.01"/>',
+    alert:'<path d="M12 4l9 15H3z"/><path d="M12 10v4M12 17h.01"/>',
+    list:'<path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/>',
+    chat:'<path d="M4 5h16v11H9l-5 4z"/>'
+  };
+  function icon(name){var s=document.createElementNS('http://www.w3.org/2000/svg','svg');s.setAttribute('class','ic');s.setAttribute('viewBox','0 0 24 24');s.setAttribute('aria-hidden','true');s.innerHTML=ICONS[name]||'';return s}
+
+  function el(tag,cls,text){var n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined&&text!==null)n.textContent=String(text);return n}
+  function add(p){for(var i=1;i<arguments.length;i++){var c=arguments[i];if(c)p.appendChild(c)}return p}
+  function arr(v){return Array.isArray(v)?v:[]}
+  function has(v){return v!==undefined&&v!==null&&String(v).trim()!==''}
+  function safeUrl(u){return typeof u==='string'&&/^https?:\/\//i.test(u)?u:null}
+  function parseDate(d){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||'');return m?new Date(+m[1],+m[2]-1,+m[3]):null}
+  function longDate(d){var x=parseDate(d);return x?x.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}):(d||'')}
+  function shortDate(d){var x=parseDate(d);return x?x.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}):(d||'')}
+  function join(parts,sep){return parts.filter(has).join(sep||' · ')}
+  function plural(n,one,many){return n+' '+(n===1?one:many)}
+  function showState(title,text){main.replaceChildren(add(el('div','empty'),el('h2',null,title),el('p','muted',text)))}
+  function facts(pairs){var dl=el('dl','facts'),any=false;pairs.forEach(function(p){if(has(p[1])){any=true;dl.appendChild(el('dt',null,p[0]));dl.appendChild(el('dd',null,p[1]))}});return any?dl:null}
+  function fit(score){var n=Math.max(0,Math.min(10,+score||0)),w=el('span','fit'),bar=el('span','bar'),f=el('i');f.style.width=n*10+'%';bar.appendChild(f);return add(w,el('span',null,'Fit '+score+'/10'),bar)}
+  function tagRow(tags){if(!tags.length)return null;var t=el('span','tags');tags.forEach(function(x){t.appendChild(el('span','tag'+(x[1]?' '+x[1]:''),x[0]))});return t}
+
+  function section(id,type,ic,title,count){
+    var s=el('section','sec t-'+type);s.id=id;
+    var h=el('div','sec-head'),box=el('span','sec-ic');box.appendChild(icon(ic));
+    add(h,box,el('h2',null,title));if(count!==undefined)h.appendChild(el('span','count',count));
+    s.appendChild(h);return s}
+  function item(token){var r=el('div',token?'item':'item plain');if(token)r.appendChild(el('span','num',token));var b=el('div','body');r.appendChild(b);return {row:r,body:b}}
+  function link(u,label){var s=safeUrl(u);if(!s)return null;var a=el('a','open',label+' →');a.href=s;a.target='_blank';a.rel='noopener noreferrer';return a}
+
+  function render(){
+    var list=state.briefs;
+    if(!list.length){dayEl.disabled=prev.disabled=next.disabled=true;document.getElementById('actions').hidden=true;
+      showState('No brief yet','Your first brief arrives after the next morning run: weekdays at 7:45 AM Eastern, plus a short one on Saturday at 10 AM.');return}
+    if(state.follow||!list.some(function(b){return b.date===state.sel}))state.sel=list[0].date;
+    var idx=list.findIndex(function(b){return b.date===state.sel}),b=list[idx];
+
+    dayEl.replaceChildren.apply(dayEl,list.map(function(x){var o=el('option',null,shortDate(x.date));o.value=x.date;return o}));
+    dayEl.value=b.date;dayEl.disabled=false;prev.disabled=idx>=list.length-1;next.disabled=idx<=0;
+
+    var jobs=arr(b.jobs),cos=arr(b.companies),evs=arr(b.events),outr=arr(b.outreach),cq=arr(b.continueQ),inbox=arr(b.inbox),dr=arr(b.drafts),wr=arr(b.weekReview),needs=arr(b.needsYou);
+    var p=b.progress||{};
+    var up='';if(has(b.generatedAt)){var t=new Date(b.generatedAt);if(!isNaN(t))up='updated '+t.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})}
+    document.getElementById('kind').textContent=join([b.kind==='saturday'?'Saturday check':'Morning brief',up,idx>0?'an earlier brief':'']);
+    document.getElementById('date').textContent=longDate(b.date);
+    var parts=[];if(jobs.length)parts.push(plural(jobs.length,'job','jobs'));if(cos.length)parts.push(plural(cos.length,'company','companies'));if(evs.length)parts.push(plural(evs.length,'event','events'));if(outr.length+cq.length)parts.push(plural(outr.length+cq.length,'follow-up','follow-ups'));
+    var lead=parts.length?parts.join(', ')+' to review.':'Nothing new to review.';
+    if(has(p.emailsDue))lead+=' '+plural(+p.emailsDue,'email','emails')+' to send today'+(has(p.emailCap)?' (cap '+p.emailCap+')':'')+'.';
+    if(has(p.daysLeft))lead+=' '+p.daysLeft+' days left to December 31.';
+    document.getElementById('lead').textContent=lead;
+    var act=document.getElementById('actions');act.hidden=false;act.firstElementChild.hidden=!jobs.length;
+
+    var out=[],nav=el('nav','nav');nav.setAttribute('aria-label','Sections');
+    function chip(id,type,label,n,hot){var a=el('a','chip t-'+type+(hot?' hot':''));a.href='#'+id;a.appendChild(document.createTextNode(label));if(n!==undefined)a.appendChild(el('i',null,n));nav.appendChild(a)}
+
+    var stats=el('div','stats');
+    [[p.appliedTotal,'applied in total'],[p.appliedThisWeek,'applied this week'],[p.interviews,'in interviews'],[p.offers,'offers']].forEach(function(s){
+      add(stats,add(el('div','stat'),el('b',null,has(s[0])?s[0]:'–'),el('span',null,s[1])))});
+    out.push(stats);
+    if(b.sample)out.push(el('div','alert info','Sample layout. These are placeholder items, not real jobs, companies or people. Your first real brief replaces this.'));
+    arr(b.notices).forEach(function(n){out.push(el('div','alert crit',n))});
+    out.push(nav);
+
+    if(needs.length){var s=section('needs','warn','alert','Needs you today',needs.length),ul=el('ul','alert-list');
+      needs.forEach(function(n){var li=el('li',null,typeof n==='string'?n:n.text);var u=n&&safeUrl(n.link);if(u){var a=el('a',null,'Open');a.href=u;a.target='_blank';a.rel='noopener noreferrer';li.appendChild(document.createTextNode(' '));li.appendChild(a)}ul.appendChild(li)});
+      add(s,ul);out.push(s);chip('needs','warn','Needs you',needs.length,true)}
+
+    var ev=b.eventToday;
+    if(ev&&has(ev.name)){var s2=section('today','event','event','Event today'),box=el('div','event'),body=el('div','event-body');
+      add(box,add(el('div','event-top'),el('h3',null,ev.name),el('p','meta',join([ev.time,ev.venue,has(ev.leaveBy)?'leave home by '+ev.leaveBy:''])),
+        (has(ev.confirmed)||has(ev.likely))?el('p','small',"Who's there: "+join([has(ev.confirmed)?ev.confirmed+' confirmed':'',has(ev.likely)?ev.likely+' likely':''])):null));
+      if(arr(ev.targets).length){body.appendChild(el('p','label','Who to approach, in order'));var tl=el('div');
+        arr(ev.targets).forEach(function(t,i){var it=item(String(i+1));
+          add(it.body,el('h3',null,t.name),tagRow([].concat(t.must?[['Must','crit']]:[],has(t.status)?[[t.status,/confirm/i.test(t.status)?'good':'']]:[],has(t.tracker)?[['Tracker: '+t.tracker,'']]:[])),has(t.about)?el('p','small',t.about):null);
+          var say=el('div','say');[['Say',t.say],['Ask',t.ask],['Mention',t.mention]].forEach(function(x){if(has(x[1])){var d=el('div');d.appendChild(el('b',null,x[0]));d.appendChild(document.createTextNode(x[1]));say.appendChild(d)}});
+          if(say.childNodes.length)it.body.appendChild(say);tl.appendChild(it.row)});
+        body.appendChild(tl)}
+      if(arr(ev.plan).length){body.appendChild(el('p','label','Plan for the evening'));var ol=el('ol','tight');arr(ev.plan).forEach(function(x){ol.appendChild(el('li',null,x))});body.appendChild(ol)}
+      if(arr(ev.keepInMind).length){body.appendChild(el('p','label','Keep in mind'));var ul2=el('ul','tight');arr(ev.keepInMind).forEach(function(x){ul2.appendChild(el('li',null,x))});body.appendChild(ul2)}
+      add(s2,add(box,body));out.push(s2);chip('today','event','Event today',undefined,true)}
+
+    if(jobs.length){var s3=section('jobs','job','job','New jobs',jobs.length),l=el('div','list');
+      jobs.forEach(function(j){var it=item(j.id);
+        add(it.body,el('h3',null,j.title),el('p','meta',join([j.company,j.location,j.type])),
+          tagRow([].concat(j.referral?[['Referral: yours','warn']]:[],has(j.bucket)?[[j.bucket,'']]:[],has(j.sponsorship)?[['Sponsorship: '+j.sponsorship,/^known/i.test(String(j.sponsorship))?'good':'']]:[])),
+          has(j.score)?fit(j.score):null,has(j.why)?el('p',null,j.why):null,facts([['Salary',j.salary],['Flag',j.flag],['Contact',j.contact]]),link(j.link,'Open the posting'));
+        l.appendChild(it.row)});
+      add(s3,l);out.push(s3);chip('jobs','job','Jobs',jobs.length)}
+
+    if(cos.length){var s4=section('companies','company','company','Companies to approach',cos.length),l2=el('div','list');
+      cos.forEach(function(c){var it=item(c.id);
+        add(it.body,el('h3',null,c.name),el('p','meta',join([c.location,c.size])),has(c.what)?el('p',null,c.what):null,facts([['Why',c.why],['Sponsorship',c.sponsorship],['Contact',c.contact]]),link(c.link,'Careers page'));
+        l2.appendChild(it.row)});
+      add(s4,l2);out.push(s4);chip('companies','company','Companies',cos.length)}
+
+    if(evs.length){var s5=section('events','event','event','Events',evs.length);if(has(b.eventsQuestion))s5.appendChild(el('p','sec-note',b.eventsQuestion));var l3=el('div','list');
+      evs.forEach(function(e){var it=item(e.id);
+        add(it.body,el('h3',null,e.name),el('p','meta',join([e.when,e.venue,e.cost])),tagRow([].concat(e.registered?[['Registered','good']]:[],has(e.conflict)?[['Conflict: '+e.conflict,'crit']]:[])),
+          has(e.why)?el('p',null,e.why):null,facts([['Travel',e.travel]]),link(e.link,'Event page'));
+        l3.appendChild(it.row)});
+      add(s5,l3);out.push(s5);chip('events','event','Events',evs.length)}
+
+    if(inbox.length){var s6=section('inbox','job','outreach','Inbox updates',inbox.length),l4=el('div','list');
+      inbox.forEach(function(m){var it=item(null);add(it.body,el('h3',null,join([m.company,m.role])),el('p',null,m.update));l4.appendChild(it.row)});
+      add(s6,l4);out.push(s6);chip('inbox','job','Inbox',inbox.length)}
+
+    if(outr.length){var s7=section('outreach','outreach','outreach','Outreach due today',outr.length);s7.appendChild(el('p','sec-note','Drafts are in Gmail. Add your own line to each, then send it yourself with Schedule send.'));var l5=el('div','list');
+      outr.forEach(function(o){var it=item(o.id);
+        add(it.body,el('h3',null,join([o.name,o.title])),el('p','meta',join([o.company,has(o.role)?'for '+o.role:''])),tagRow([].concat(has(o.touch)?[['Touch '+o.touch,'']]:[],o.buAlum?[['BU alum','good']]:[],[['Draft in Gmail','']])));
+        l5.appendChild(it.row)});
+      add(s7,l5);out.push(s7);chip('outreach','outreach','Outreach',outr.length)}
+
+    if(cq.length){var s8=section('continue','continue','continue','Continue?',cq.length);s8.appendChild(el('p','sec-note','No reply after two messages. Say continue or stop for each.'));var l6=el('div','list');
+      cq.forEach(function(q){var it=item(q.id);add(it.body,el('h3',null,join([q.name,q.title])),el('p','meta',join([q.company,has(q.lastContacted)?'last contacted '+q.lastContacted:''])));l6.appendChild(it.row)});
+      add(s8,l6);out.push(s8);chip('continue','continue','Continue?',cq.length)}
+
+    if(dr.length){var s9=section('drafts','outreach','chat','Other drafts ready',dr.length),l7=el('div','list');
+      dr.forEach(function(d){var it=item(null);add(it.body,el('h3',null,d.to),el('p',null,d.purpose));l7.appendChild(it.row)});
+      add(s9,l7);out.push(s9);chip('drafts','outreach','Drafts',dr.length)}
+
+    if(wr.length){var s10=section('week','company','list','Week in review'),r0=el('div','reply'),ul3=el('ul');wr.forEach(function(x){ul3.appendChild(el('li',null,x))});add(s10,add(r0,ul3));out.push(s10);chip('week','company','Week')}
+
+    if(has(b.replyExample)){var s11=section('reply','job','chat','How to reply'),r=el('div','reply'),code=el('code',null,b.replyExample),btn=el('button','btn primary','Copy');btn.type='button';btn.id='copy-reply';
+      btn.addEventListener('click',function(){var done=function(ok){btn.textContent=ok?'Copied':'Select the text to copy';setTimeout(function(){btn.textContent='Copy'},1800)};
+        try{navigator.clipboard.writeText(b.replyExample).then(function(){done(true)},function(){done(false)})}catch(e){done(false)}});
+      add(s11,add(r,el('p','small','Open Claude on your Mac and reply with the numbers you want, for example:'),code,btn));out.push(s11);chip('reply','job','How to reply')}
+
+    main.replaceChildren.apply(main,out);
+  }
+
+  function pick(d){state.sel=d;state.follow=!!state.briefs.length&&d===state.briefs[0].date;render();window.scrollTo(0,0)}
+  dayEl.addEventListener('change',function(){pick(dayEl.value)});
+  prev.addEventListener('click',function(){var i=state.briefs.findIndex(function(b){return b.date===state.sel});if(i<state.briefs.length-1)pick(state.briefs[i+1].date)});
+  next.addEventListener('click',function(){var i=state.briefs.findIndex(function(b){return b.date===state.sel});if(i>0)pick(state.briefs[i-1].date)});
+
+  var KEY='jsb-passphrase',enc=null;
+  function b64(x){var bin=atob(x),u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return u}
+  function stored(){try{return localStorage.getItem(KEY)||''}catch(e){return ''}}
+  function remember(p){try{localStorage.setItem(KEY,p)}catch(e){}}
+  function forget(){try{localStorage.removeItem(KEY)}catch(e){}}
+  function decrypt(pass){
+    var te=new TextEncoder();
+    return crypto.subtle.importKey('raw',te.encode(pass),'PBKDF2',false,['deriveKey']).then(function(k){
+      return crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(enc.salt),iterations:enc.iter,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['decrypt'])
+    }).then(function(k){return crypto.subtle.decrypt({name:'AES-GCM',iv:b64(enc.iv)},k,b64(enc.ct))
+    }).then(function(buf){return JSON.parse(new TextDecoder().decode(buf))})}
+  function lockScreen(msg){
+    dayEl.disabled=prev.disabled=next.disabled=true;document.getElementById('actions').hidden=true;lockBtn.hidden=true;
+    document.getElementById('kind').textContent='Morning brief';document.getElementById('date').textContent='Your job search, one page a day';
+    document.getElementById('lead').textContent='This page is locked. Enter your passphrase to read the brief.';
+    var box=el('form','empty lock'),inp=el('input'),btn=el('button','btn primary','Unlock'),err=el('p','lock-err',msg||'');
+    inp.type='password';inp.id='passphrase';inp.autocomplete='current-password';inp.setAttribute('aria-label','Passphrase');inp.placeholder='Passphrase';btn.type='submit';
+    add(box,el('h2',null,'Enter your passphrase'),el('p','muted','You only need to do this once on each device.'),inp,btn,err);
+    box.addEventListener('submit',function(e){e.preventDefault();var p=inp.value.trim();if(!p){err.textContent='Enter the passphrase first.';return}
+      btn.disabled=true;btn.textContent='Unlocking';unlock(p,true)});
+    main.replaceChildren(box);inp.focus()}
+  function unlock(pass,fromForm){
+    decrypt(pass).then(function(data){remember(pass);lockBtn.hidden=false;
+      state.briefs=arr(data&&data.briefs).filter(function(d){return d&&has(d.date)}).sort(function(a,b){return a.date<b.date?1:-1});render()
+    },function(){forget();lockScreen(fromForm?'That passphrase did not unlock the brief. Check it and try again.':'')})}
+  var lockBtn=document.getElementById('lock');
+  lockBtn.addEventListener('click',function(){forget();state.briefs=[];lockScreen('')});
+  if(!(window.crypto&&crypto.subtle)){showState('This browser cannot open the brief','Open the page over https in a current browser.')}
+  else fetch('briefs.enc.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('load');return r.json()}).then(function(j){
+    enc=j;var p=stored();if(p)unlock(p,false);else lockScreen('')
+  },function(){showState('The brief could not be loaded','Reload the page. If it still does not load, the brief is also in this morning\'s conversation in Claude.')});
+})();
+</script>
+
+</body>
+</html>
